@@ -123,9 +123,9 @@
               <p class="card-text"><?= substr("$produit->description",0,125) ?>...</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Acheter</button>
+                  <a href="payment.php?pdt=<?= $produit->id ?>" class="btn btn-sm btn-outline-secondary">Acheter</a>
                 </div>
-                <small class="text-body-secondary"><?= $produit->prix ?> €</small>
+                <small class="text-body-secondary"><?= $produit->prix ?> XOF</small>
               </div>
             </div>
           </div>

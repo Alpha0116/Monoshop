@@ -7,6 +7,12 @@
         {
            header("Location: admin/");
         }
+    }elseif(isset($_SESSION['user']))
+    {   //Verifie si l'utilisateur est déja connecter entant que client
+        if(!empty($_SESSION['user']))
+        {
+           header("Location: payment.php");
+        }
     }
    
     include"config/commandes.php";
@@ -52,12 +58,16 @@
         {
             $email=htmlspecialchars($_POST['email']);
             $motdepasse=htmlspecialchars($_POST['motdepasse']);
-            $admin=getAdmin($email, $motdepasse);
+            $admin=getAdmin($email, $motdepasse) or $admin=getUser($email, $motdepasse);
 
-            if($admin)
+            if($admin=getAdmin($email, $motdepasse))
             {
                 $_SESSION['admin']= $admin;
                 header("Location: admin/afficher.php");
+            }elseif($admin=getUser($email, $motdepasse))
+            {
+                $_SESSION['user']= $admin;
+                header("Location: payment.php");
             }else
             {
                 echo"Email ou mot de passe incorrect";

@@ -72,7 +72,7 @@
                                 <img src="<?= $produit->image ?>" alt="" style="width: 15%;">
                             </td>
                             <td><?= $produit->nom ?></td>
-                            <td style="font-weight: bold;color:green"><?= $produit->prix ?>€</td>
+                            <td style="font-weight: bold;color:green"><?= $produit->prix ?> XOF</td>
                             <td><?= substr("$produit->description",0,100) ?>...</td>
                             <td>
                                 <a href="editer.php?pdt=<?= $produit->id ?>"><i class="fa fa-pen" style="font-size: 180%;"></i></a>

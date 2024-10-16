@@ -44,6 +44,23 @@ function getAdmin($email, $password){
 }
 
 /**
+ * Se connecter entant que client.
+ */
+function getUser($email, $password){
+    global $access;
+    $req = $access->prepare("SELECT * FROM customers WHERE email=? AND password=?");
+    $req->execute(array($email, $password));
+    if($req->rowCount() == 1){
+        $data= $req->fetch();
+        return $data;
+    }else
+    {
+        return false;
+    }
+    $req->closeCursor();
+}
+
+/**
  * Ajoute un produit dans la base de données.
  */
 function ajouter($image, $nom, $prix, $desc) {
